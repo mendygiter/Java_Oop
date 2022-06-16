@@ -25,7 +25,7 @@
     <c:forEach var="expense" items="${expensesFromController}">
         <tr>
             <td>
-                <h3>${expense.id}</h3>
+                <h3><a href="/show/${expense.id}">${expense.id}</a></h3>
             </td>
             <td>
                 <h3>${expense.expenses}</h3>
@@ -36,7 +36,18 @@
             <td>
                 <h3>${expense.amount}</h3>
             </td>
+            <td>
+                <a href="/edit/${expense.id}">edit</a>
+            </td>
+
+            <td>
+                <form action="/dashboard/${expense.id}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="Delete">
+                </form>
+            </td>
         </tr>
+
     </c:forEach>
     </tbody
 </table>
